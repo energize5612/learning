@@ -8,10 +8,12 @@ function makeGrid(sizeHeight, sizeWidth) {
     var sizePicker = document.querySelector('#sizePicker');
     // listen for the submit button and run function to set the sizeHeight and sizeWidth variable values according to the input values
     sizePicker.addEventListener('submit', function _submitEvent(submitEvent) {
+        //get rid of the first cell
         grid.firstElementChild.remove();
+        //stop the action error on page load
         submitEvent.preventDefault();
         makeGrid(document.querySelector('#inputHeight').value, document.querySelector('#inputWidth').value);
-    }, true);
+    },);
     // loop through cell insertions according to sizeWidth and sizeHeight variable values and insert colors on click
     for (let x = 0; x < sizeHeight; x++) {
         let row = grid.insertRow(x);
@@ -30,11 +32,10 @@ removeButton.addEventListener('click', function _resetEvent(resetEvent){
     for (var i = 0; i < td.length; i++) {
         var tdArray = [];
         tdArray.push(i);
-        console.log(tdArray);
         document.getElementsByTagName('td')[tdArray].removeAttribute('style');
 }
     });
-// execute the actual function to fire up the listeners
+// execute the actual function 
 makeGrid(sizeHeight, sizeWidth);
 
 
